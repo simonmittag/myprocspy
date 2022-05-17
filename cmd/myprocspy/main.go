@@ -13,7 +13,7 @@ import (
 const concurrency = 10
 
 func main() {
-	fmt.Println("myprocspy starts")
+	fmt.Print("\nmyprocspy-starts-open-conns-")
 
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
@@ -25,7 +25,7 @@ func main() {
 	mreqs(wg)
 
 	wg.Wait()
-	fmt.Println("myprocspy ends")
+	fmt.Println("myprocspy-ends\n")
 }
 
 func initHTTPClient() http.Client {
