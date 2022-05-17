@@ -15,11 +15,6 @@ const concurrency = 10
 func main() {
 	fmt.Println("myprocspy starts")
 
-	c := http.Client{
-		Transport: &http.Transport{
-			MaxConnsPerHost: concurrency,
-		},
-	}
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
 	time.AfterFunc(time.Millisecond*500, func() {
@@ -27,21 +22,32 @@ func main() {
 	})
 
 	go spies()
-	mreqs(c, wg)
+	mreqs(wg)
 
 	wg.Wait()
 	fmt.Println("myprocspy ends")
 }
 
-func mreqs(c http.Client, wg *sync.WaitGroup) {
+func initHTTPClient() http.Client {
+	c := http.Client{
+		Transport: &http.Transport{
+			MaxConnsPerHost: 1,
+			IdleConnTimeout: time.Duration(1 * time.Second),
+		},
+	}
+	return c
+}
+
+func mreqs(wg *sync.WaitGroup) {
 	for i := 0; i < concurrency; i++ {
 		time.Sleep(time.Millisecond * 100)
-		go reqs(c, wg)
+		go reqs(wg)
 	}
 }
 
-func reqs(c http.Client, wg *sync.WaitGroup) {
+func reqs(wg *sync.WaitGroup) {
 	wg.Add(1)
+	c := initHTTPClient()
 	for i := 0; i < 1000; i++ {
 		res, _ := c.Get("http://jsonplaceholder.typicode.com/todos/1")
 		_, _ = ioutil.ReadAll(res.Body)
