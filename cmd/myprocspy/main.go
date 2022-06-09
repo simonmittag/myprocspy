@@ -16,7 +16,7 @@ var url = "jsonplaceholder.typicode.com/todos/1"
 var tlsmode = false
 
 func main() {
-	if len(os.Args) > 0 && os.Args[1] == "-s" {
+	if len(os.Args) > 1 && os.Args[1] == "-s" {
 		url = "https://" + url
 		tlsmode = true
 	} else {
