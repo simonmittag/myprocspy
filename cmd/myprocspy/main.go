@@ -57,11 +57,11 @@ func mreqs(wg *sync.WaitGroup) {
 func reqs(wg *sync.WaitGroup) {
 	wg.Add(1)
 	c := initHTTPClient()
-	for i := 0; i < 50; i++ {
+	for i := 0; i < 100; i++ {
 		res, _ := c.Get(url)
 		_, _ = ioutil.ReadAll(res.Body)
 		res.Body.Close()
-		time.Sleep(time.Millisecond * 20)
+		time.Sleep(time.Millisecond * 50)
 	}
 	wg.Done()
 }
