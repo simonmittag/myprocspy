@@ -1,2 +1,10 @@
-github.com/simonmittag/procspy v0.0.0-20191119070947-e8cf3f846a67 h1:2vdAWuq0Bz3r4hu/1il3b6r40GtPu/CpOVy4mdd5u0s=
-github.com/simonmittag/procspy v0.0.0-20191119070947-e8cf3f846a67/go.mod h1:HUFk0D2ql6u0y8MaqlKQQty3NqIZGe/SvQt7D8QS5Ok=
+github.com/simonmittag/procspy v0.0.0-20220609064217-4b297f3a5489 h1:wHSFat+2zmzkd5nQwZANlunErkKoSvCkmJHDqQG60iQ=
+github.com/simonmittag/procspy v0.0.0-20220609064217-4b297f3a5489/go.mod h1:HUFk0D2ql6u0y8MaqlKQQty3NqIZGe/SvQt7D8QS5Ok=
+github.com/simonmittag/procspy v0.0.1 h1:Y4jq0Rm3/9299zLSUR213n7QgEYqzVQpAiHTNGF78sw=
+github.com/simonmittag/procspy v0.0.1/go.mod h1:HUFk0D2ql6u0y8MaqlKQQty3NqIZGe/SvQt7D8QS5Ok=
+github.com/simonmittag/procspy v0.0.2 h1:CEt2xTe5tcm/m+X5/Zmxy55foIfazFqd0ximKgUfwXc=
+github.com/simonmittag/procspy v0.0.2/go.mod h1:HUFk0D2ql6u0y8MaqlKQQty3NqIZGe/SvQt7D8QS5Ok=
+github.com/simonmittag/procspy v0.0.3 h1:N7pfTmZYTafwtSnRnFMYr5Xib8CMMD9KawMfy7RxVlk=
+github.com/simonmittag/procspy v0.0.3/go.mod h1:l0JM9lRYlCWSks6n2bR8LoSXsv4E6a5jUk/tAthhTgg=
+github.com/simonmittag/procspy v0.0.4 h1:Y/sXePLWVJUxodCNLtYsMjmUnBcBSZ6BakED0CvkOAw=
+github.com/simonmittag/procspy v0.0.4/go.mod h1:l0JM9lRYlCWSks6n2bR8LoSXsv4E6a5jUk/tAthhTgg=

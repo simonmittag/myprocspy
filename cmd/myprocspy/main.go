@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const concurrency = 10
+const concurrency = 16
 
 func main() {
 	fmt.Print("\nmyprocspy-starts-open-conns-")
@@ -48,7 +48,7 @@ func mreqs(wg *sync.WaitGroup) {
 func reqs(wg *sync.WaitGroup) {
 	wg.Add(1)
 	c := initHTTPClient()
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 100; i++ {
 		res, _ := c.Get("http://jsonplaceholder.typicode.com/todos/1")
 		_, _ = ioutil.ReadAll(res.Body)
 		res.Body.Close()
@@ -57,7 +57,7 @@ func reqs(wg *sync.WaitGroup) {
 }
 
 func spies() {
-	for {
+	for i := 0; i < 25; i++ {
 		time.Sleep(time.Millisecond * 100)
 		p := fmt.Sprintf("%02d-", spy())
 		fmt.Print(p)
