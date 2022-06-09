@@ -52,6 +52,7 @@ func reqs(wg *sync.WaitGroup) {
 		res, _ := c.Get("http://jsonplaceholder.typicode.com/todos/1")
 		_, _ = ioutil.ReadAll(res.Body)
 		res.Body.Close()
+		time.Sleep(time.Millisecond * 100)
 	}
 	wg.Done()
 }
