@@ -57,7 +57,7 @@ func reqs(wg *sync.WaitGroup) {
 }
 
 func spies() {
-	for i := 0; i < 25; i++ {
+	for i := 0; i < 100; i++ {
 		time.Sleep(time.Millisecond * 100)
 		p := fmt.Sprintf("%02d-", spy())
 		fmt.Print(p)
