@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-const concurrency = 16
+const concurrency = 32
 
 func main() {
 	fmt.Print("\nmyprocspy-starts-open-conns-")
