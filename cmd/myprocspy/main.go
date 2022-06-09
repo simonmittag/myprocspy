@@ -12,8 +12,17 @@ import (
 
 const concurrency = 32
 
+var url = "jsonplaceholder.typicode.com/todos/1"
+var tlsmode = false
+
 func main() {
-	fmt.Print("\nmyprocspy-starts-open-conns-")
+	if len(os.Args) > 0 && os.Args[1] == "-s" {
+		url = "https://" + url
+		tlsmode = true
+	} else {
+		url = "http://" + url
+	}
+	fmt.Printf("\nmyprocspy-starts-open-conns-%v-c%v-", url, concurrency)
 
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
@@ -48,11 +57,11 @@ func mreqs(wg *sync.WaitGroup) {
 func reqs(wg *sync.WaitGroup) {
 	wg.Add(1)
 	c := initHTTPClient()
-	for i := 0; i < 100; i++ {
-		res, _ := c.Get("http://jsonplaceholder.typicode.com/todos/1")
+	for i := 0; i < 50; i++ {
+		res, _ := c.Get(url)
 		_, _ = ioutil.ReadAll(res.Body)
 		res.Body.Close()
-		time.Sleep(time.Millisecond * 100)
+		time.Sleep(time.Millisecond * 20)
 	}
 	wg.Done()
 }
@@ -69,8 +78,12 @@ func spy() int {
 	pid := os.Getpid()
 	cs, _ := procspy.Connections(true)
 	d := 0
+	var wantport uint16 = 80
+	if tlsmode {
+		wantport = 443
+	}
 	for c := cs.Next(); c != nil; c = cs.Next() {
-		if c.PID == uint(pid) && c.RemotePort == 80 {
+		if c.PID == uint(pid) && c.RemotePort == wantport {
 			d++
 		}
 	}
